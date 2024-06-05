@@ -1,16 +1,28 @@
+import imgGame from '../img/goblin.png'
+const fields = document.querySelectorAll(".fields");
+const img = document.createElement("img");
+const imgGoblin = document.querySelector(".imgGoblin");
+
+
+let number = 0; 
+
+img.src = imgGame;
+fields[number].append(img);
+
 
 export class gameClass {
     constructor() {
-        this.counter = +document.getElementById('dead');
-        this.misses = +document.getElementById("lost");
+        this.dead = document.getElementById('dead');
+        this.lost = document.getElementById("lost");
     }
     init() {
       fields.forEach((el) => el.addEventListener("click", function() {
-        if(el.contains()) {
-
+        if(el.contains(imgGoblin)) {
+          fields[number].append(img);
         }
       }))
     }
+  
 }
 
 
@@ -41,11 +53,3 @@ export class gameClass {
 
 
 
-//первый метод будет init(), например, так их часто называют, 
-//т.е. это типа подготовка игры. В нём проходимся по всем ячейкам 
-//игрового поля и на каждую навешиваем слушателя клика. 
-//Внутри этого слушателя проверяем нажатое (т.е. ту ячейку по которой кликнули), 
-//есть ли в ней гоблин, если есть, то увеличиваем попадания, иначе увеличиваем промохи. 
-//Тут же проверяем на набравшееся количество, т.е. может пора объявить победителем или проигравшим.
-//второй метод будет, например, start(), это старт игры, т.е. здесь как раз и запускаем интервал через секунду. 
-//Здесь надо ещё додумывать что как считать
