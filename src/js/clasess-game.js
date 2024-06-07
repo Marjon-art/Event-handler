@@ -1,7 +1,6 @@
 import imgGame from '../img/goblin.png'
 const fields = document.querySelectorAll(".fields");
 const img = document.createElement("img");
-const imgGoblin = document.querySelector(".imgGoblin");
 
 
 let number = 0; 
@@ -14,15 +13,21 @@ export class gameClass {
     constructor() {
         this.dead = document.getElementById('dead');
         this.lost = document.getElementById("lost");
+        //let counterLost = +this.lost.textContent;
     }
     init() {
       fields.forEach((el) => el.addEventListener("click", function() {
+        let imgGoblin = document.querySelector("img");
+        let counterDead = this.dead.textContent;
         if(el.contains(imgGoblin)) {
-          fields[number].append(img);
+         counterDead++;
+         this.dead.textContent = counterDead;
+          console.log("картинка есть");
+        } else {
+          console.log("картинка нет");
         }
       }))
     }
-  
 }
 
 
