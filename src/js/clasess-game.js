@@ -1,34 +1,52 @@
 import imgGame from '../img/goblin.png'
-const fields = document.querySelectorAll(".fields");
-const img = document.createElement("img");
 
 
-let number = 0; 
-
-img.src = imgGame;
-fields[number].append(img);
 
 
 export class gameClass {
     constructor() {
         this.dead = document.getElementById('dead');
         this.lost = document.getElementById("lost");
-        //let counterLost = +this.lost.textContent;
-    }
+        this.fields = document.querySelectorAll(".fields");
+        this.number = 0; 
+       }
     init() {
-      fields.forEach((el) => el.addEventListener("click", function() {
-        let imgGoblin = document.querySelector("img");
-        let counterDead = this.dead.textContent;
-        if(el.contains(imgGoblin)) {
-         counterDead++;
-         this.dead.textContent = counterDead;
-          console.log("картинка есть");
+     fields.forEach((el) => el.addEventListener("click", () => {
+      img.src = imgGame;
+      fields[this.number].append(img);
+       if(el.contains(imgGame)) {
+          this.dead.textContent++;
         } else {
-          console.log("картинка нет");
+          this.lost.textContent++;
+          if(this.dead === 10) {
+            alert("Вы победили");
+            this.dead = 0;
+            this.lost = 0;
+          }
+          if(this.lost === 5) {
+            alert("Вы проиграли");
+            this.dead = 0;
+            this.lost = 0;
+
+          }
         }
       }))
     }
+    start() {
+      function getRandom(max) {
+        let randomA = Math.floor(Math.random() * max);
+        while (randomA === this.number) {
+          randomA = Math.floor(Math.random() * max);
+              } 
+              this.number = randomA; 
+              return this.number; 
+            
+            } 
+            getRandom(16);
+            fields[this.number].append(img);  
+    }
 }
+
 
 
 

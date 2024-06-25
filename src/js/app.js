@@ -3,7 +3,7 @@ import { gameClass } from "./clasess-game"
 
 const gamePlay = new gameClass();
 
-gamePlay.init();
+//gamePlay.init();
 //gamePlay.start();
 
 
